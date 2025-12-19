@@ -1,3 +1,6 @@
+Tools and Technologies -> React , Javascript, Mongodb, Redux, TailwindCSS, Node.js, Express.js
+
+
 User can Register 
 <img width="1543" height="956" alt="Screenshot 2025-12-19 152435" src="https://github.com/user-attachments/assets/c1f961c9-bdba-4ef2-8411-d7414a3c46cd" />
 
