@@ -105,6 +105,11 @@ exports.cancelRegistration = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Opportunity not found' });
     }
 
+    // Check if user is registered
+    if (!opportunity.registeredVolunteers.includes(req.userId)) {
+      return res.status(400).json({ success: false, message: 'You are not registered for this opportunity' });
+    }
+
     // Remove volunteer
     opportunity.registeredVolunteers = opportunity.registeredVolunteers.filter(
       id => id.toString() !== req.userId.toString()
@@ -117,7 +122,7 @@ exports.cancelRegistration = async (req, res) => {
       $pull: { registeredOpportunities: opportunity._id }
     });
 
-    res.json({ success: true, message: 'Registration cancelled' });
+    res.json({ success: true, message: 'Registration cancelled', opportunity });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
